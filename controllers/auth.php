@@ -11,24 +11,20 @@ function login()
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-            validate_input($_POST, ['login', 'password']);
+            validate_input($_POST, ['login'=>['required'], 'password'=>['required']]);
 
-            if ( isset( $_POST['action'] ) && $_POST['action'] == "register" )
-            {
-                $user = \User::create($_POST);
-            }
-            else {
-                $user = \User::query()->where("login = ? AND password = ?", [$_POST['login'],$_POST['password']])->first();
-            }
+            $user = \User::query()->where("(login = :login AND password = :password) OR (email = :login AND password = :password)",
+                                          ['login' => $_POST['login'],
+                                           'password' => $_POST['password']])
+                                          ->first();
+
             if ($user)
             {
                 $_SESSION['user'] = $user->toArray();
-
-                $redirect_url = flash_has('authorize_return_url') ? flash_get('authorize_return_url') : url_for('main');
-                return redirect($redirect_url);
+                return redirect(url_for('main'));
             }
             else {
-                throw new \WrongInputException(['login' => 'Wrong login-password pair']);
+                throw new \WrongInputException(['login' => ['Wrong login-password pair']]);
             }
 
         // return redirect_back();

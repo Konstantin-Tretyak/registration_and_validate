@@ -43,18 +43,9 @@ function app_run() {
     }
     catch (WrongInputException $e)
     {
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == strtolower('xmlhttprequest'))) {
-            $response = [
-                'code' => 422,
-                'body' => json_encode($e->errors)
-            ];
-        }
-        else
-        {
-            flash_set('old', $_POST);
-            flash_set('errors', $e->errors);
-            $response = redirect_back();
-        }
+        flash_set('old', $_POST);
+        flash_set('errors', $e->errors);
+        $response = redirect_back();
     }
     catch (NotAllowedException $e)
     {

@@ -1,9 +1,9 @@
 <form method="post" action="<?php echo url_for('login'); ?>">
-    <div class="form-group <?php if (isset($errors['email'])) echo 'has-error' ?>">
-        <input type="text" class="form-control" name="email" placeholder="Login or email"
-               value="<?php if(isset($old['email'])) echo $old['email']; ?>">
-        <?php if (isset($errors['email'])): ?>
-            <span class="help-block"><?php echo $errors['email'][0] ?></span>
+    <div class="form-group <?php if (isset($errors['login'])) echo 'has-error' ?>">
+        <input type="text" class="form-control" name="login" placeholder="Login or email"
+               value="<?php if(isset($old['login'])) echo $old['login']; ?>">
+        <?php if (isset($errors['login'])): ?>
+            <span class="help-block"><?php echo $errors['login'][0] ?></span>
         <?php endif ?>
     </div>
 
@@ -15,5 +15,5 @@
         <?php endif ?>
     </div>
 
-    <button class="btn btn-default" type="submit">Войти</button>
+    <button class="btn btn-primary" type="submit">Войти</button>
 </form>
