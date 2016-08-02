@@ -1,0 +1,6 @@
+{
+    "require": {
+        "illuminate/validation": "~4.2.9",
+        "psy/psysh": "^0.7.2"
+    }
+}
