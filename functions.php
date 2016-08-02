@@ -135,24 +135,29 @@
         });
 
         $messages = array(
-            'email.required' => 'Is required.',
+            'email.required' => 'Is required',
             'email.unique' => 'Must be unique',
-            'email.email' => 'Must be email.',
+            'email.email' => 'Must be email',
 
-            'login.required' => 'Is required.',
+            'login.required' => 'Is required',
             'login.unique' => 'Must be unique',
-            'login.min' => 'Must be at least :min characters.',
-            'login.max' => 'Must be no more than :max characters.',
+            'login.min' => 'Must be at least :min characters',
+            'login.max' => 'Must be no more than :max characters',
 
-            'real_name.required' => 'Is required.',
-            'real_name.min' => 'Must be at least :min characters.',
-            'real_name.max' => 'Must be no more than :max characters.',
+            'real_name.required' => 'Is required',
+            'real_name.min' => 'Must be at least :min characters',
+            'real_name.max' => 'Must be no more than :max characters',
 
-            'password.required' => 'Is required.',
-            'password.min' => 'Must be at least :min characters.',
+            'password.required' => 'Is required',
+            'password.min' => 'Must be at least :min characters',
 
-            'country_id.required' => 'Is required.',
-            'country_id.exists'   => 'Is incorect'
+            'country_id.required' => 'Is required',
+            'country_id.exists'   => 'Is incorrect',
+
+            'birth_date.required' => 'Is required',
+            'birth_date.date_format' => 'Incorrect date format',
+
+            'agree_cond.accepted' => 'Must be checked',
         );
         $validator = $validatorFactory->make($data, $rules, $messages);
         if ($validator->fails()) {

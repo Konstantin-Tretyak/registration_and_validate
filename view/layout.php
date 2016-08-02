@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>
-            Football
+            Tretyak Test Task
         </title>
         <meta charset="utf-8">
 
@@ -21,15 +21,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="<?php echo url(url_for('main')) ?>">My football</a>
+                  <a class="navbar-brand" href="<?php echo url(url_for('main')) ?>">Tretyak Test Task</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav navbar-right">
                     <?php if ($current_user): ?>
-                        <li><a href="<?php echo url(url_for('logout')) ?>">Выйти</a></li>
+                        <li><a href="<?php echo url(url_for('logout')) ?>">Sign Out</a></li>
                     <?php else: ?>
-                        <li><a href="<?php echo url(url_for('login')) ?>">Войти</a></li>
+                        <li><a href="<?php echo url(url_for('login')) ?>">Sign In</a></li>
+                        <li><a href="<?php echo url(url_for('register')) ?>">Register</a></li>
                     <?php endif; ?>
 
                   </ul>

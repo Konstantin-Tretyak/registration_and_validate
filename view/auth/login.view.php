@@ -15,5 +15,5 @@
         <?php endif ?>
     </div>
 
-    <button class="btn btn-primary" type="submit">Войти</button>
+    <button class="btn btn-primary" type="submit">Sign In</button>
 </form>

@@ -1,9 +1,11 @@
-<div>
-    <?php echo $user->email; ?>
-</div>
-<div>
-    <?php echo $user->real_name; ?>
-</div>
-<a href="<?php echo url(url_for('logout')); ?>">
-    Выйти
-</a>
+<?php if($current_user): ?>
+<p>
+    Hello, <?php echo $current_user->real_name; ?>
+</p>
+    Your email: <?php echo $current_user->email; ?>
+</p>
+<?php else: ?>
+<p>
+    Hello, Guest!
+</p>
+<?php endif; ?>

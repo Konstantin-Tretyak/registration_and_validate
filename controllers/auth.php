@@ -4,35 +4,32 @@ namespace Controllers\Auth;
 
 function login()
 {
-    if ( get_authorized_user() )
+    if ($_SERVER['REQUEST_METHOD'] == 'GET')
     {
-        return redirect_back();
-    }
+        if (get_authorized_user())
+        {
+            return redirect_back();
+        }
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        return view('auth/login');
+    }
+    elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-            validate_input($_POST, ['login'=>['required'], 'password'=>['required']]);
+        validate_input($_POST, ['login'=>['required'], 'password'=>['required']]);
 
-            $user = \User::query()->where("(login = :login AND password = :password) OR (email = :login AND password = :password)",
-                                          ['login' => $_POST['login'],
-                                           'password' => $_POST['password']])
-                                          ->first();
+        $user = \User::query()->where("(login = :login AND password = :password) OR (email = :login AND password = :password)",
+                                      ['login' => $_POST['login'],
+                                       'password' => $_POST['password']])
+                                      ->first();
 
-            if ($user)
-            {
-                $_SESSION['user'] = $user->toArray();
-                return redirect(url_for('main'));
-            }
-            else {
-                throw new \WrongInputException(['login' => ['Wrong login-password pair']]);
-            }
-
-        // return redirect_back();
+        if ($user)
+        {
+            $_SESSION['user'] = $user->toArray();
+            return redirect(url_for('main'));
+        }
+        else
+            throw new \WrongInputException(['login' => ['Wrong login-password pair']]);
     }
-
-    $countries = \Country::query()->all();
-
-    return view('auth/login',  compact('countries'));
 }
 
 function register()
