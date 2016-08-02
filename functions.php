@@ -115,6 +115,10 @@
         return ['code' => 302, 'headers' => ['Location' => $url]];
     }
 
+    function crypt_password($password) {
+        return md5($password.SALT);
+    }
+
     function redirect_back()
     {
         $request_url = $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];

@@ -38,9 +38,10 @@
     </div>
 
     <div class="form-group <?php if (isset($errors['country_id'])) echo 'has-error' ?>">
-        Your country:
+        Your country
         <select name="country_id" class="form-control">
             <?php foreach ($countries as $country) : ?>
+                <!-- TODO: old input -->
                 <option value="<?php echo $country->id; ?>"><?php echo $country->name; ?></option>
             <?php endforeach ?>
         </select>
@@ -52,7 +53,7 @@
     <div class="form-group <?php if (isset($errors['agree_cond'])) echo 'has-error' ?>">
         <div class="checkbox">
             <label>
-                <input type="checkbox" name="agree_cond">
+                <input type="checkbox" name="agree_cond" <?php if(isset($old['agree_cond'])) echo 'checked'; ?>>
                 I agree with terms and conditions
             </label>
         </div>

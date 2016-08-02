@@ -16,10 +16,10 @@ function login()
     elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         validate_input($_POST, ['login'=>['required'], 'password'=>['required']]);
-
         $user = \User::query()->where("(login = :login AND password = :password) OR (email = :login AND password = :password)",
                                       ['login' => $_POST['login'],
-                                       'password' => $_POST['password']])
+                                       'password' => crypt_password($_POST['password'])
+                                      ])
                                       ->first();
 
         if ($user)
@@ -48,6 +48,7 @@ function register()
             'country_id' => ['required','exists:countries,id'],
             'agree_cond' => ['accepted']));
 
+        $_POST['password'] = crypt_password($_POST['password']);
         $user = \User::create($_POST);
 
         $_SESSION['user'] = $user->toArray();

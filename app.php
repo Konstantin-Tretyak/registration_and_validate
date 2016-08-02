@@ -8,6 +8,7 @@ require __DIR__.'/autoload.php';
 define('ROOT_CATALOGUE', ''); // leave empty if site lays in the server root
 define('BASE_DIR', __DIR__);
 define('ENV', 'dev');
+define('SALT', '$2y$11$q5MkhSBtlsJcNEVsYh64a.aCluzHnGog7TQAKVmQwO9C8xb.t89F.');
 
 $connection_string = "mysql:host=localhost;dbname=tretyak_test_db";
 $user = 'root';
