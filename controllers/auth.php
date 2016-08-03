@@ -40,7 +40,7 @@ function register()
     }
     elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
         validate_input($_POST, array(
-            'email' => ['required', 'email', 'unique:users,login'],
+            'email' => ['required', 'email', 'unique:users,email'],
             'login' => ['required', 'min:3', 'max:20', 'unique:users,login'],
             'real_name' => ['required', 'min:3', 'max:20'],
             'password' => ['required', 'min:5'],

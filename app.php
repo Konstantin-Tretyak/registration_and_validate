@@ -1,6 +1,5 @@
 <?php
 
-
 require __DIR__.'/functions.php';
 require __DIR__.'/autoload.php';
 require __DIR__.'/vendor/autoload.php';
@@ -59,21 +58,6 @@ function app_run() {
         else {
             flash_set('authorize_return_url', $_SERVER['REQUEST_URI']);
             $response = redirect(url_for('login'));
-        }
-    }
-
-    catch (Exception $e)
-    {
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && (strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == strtolower('xmlhttprequest'))) {
-            $error = (ENV == 'dev') ? $e->getMessage()."\n".$e->getTraceAsString() : 'Sorry, some error occured';
-            $response = [
-                'code' => 500,
-                'body' => json_encode(['error' => $error])
-            ];
-        }
-        else {
-            $body = (ENV == 'dev') ? "<pre>".$e->getMessage()."\n".$e->getTraceAsString()."</pre>" : view('errors/500');
-            $response = ['code' => 500, 'body' => $body];
         }
     }
 
