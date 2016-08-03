@@ -1,7 +1,5 @@
 <?php
 
-//require "QueryBuilder.php";
-
 abstract class DbModel
 {
     protected static $table;

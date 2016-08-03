@@ -49,7 +49,7 @@ function register()
             'agree_cond' => ['accepted']));
 
         $_POST['password'] = crypt_password($_POST['password']);
-        $user = \User::create($_POST);
+        $user = \User::create($_POST, array('time_created'=>date('Y-m-d H:i:s')));
 
         $_SESSION['user'] = $user->toArray();
 

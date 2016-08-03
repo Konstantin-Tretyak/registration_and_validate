@@ -3,7 +3,7 @@
 
 require __DIR__.'/functions.php';
 require __DIR__.'/autoload.php';
-
+require __DIR__.'/vendor/autoload.php';
 
 define('ROOT_CATALOGUE', ''); // leave empty if site lays in the server root
 define('BASE_DIR', __DIR__);
@@ -47,10 +47,6 @@ function app_run() {
         flash_set('old', $_POST);
         flash_set('errors', $e->errors);
         $response = redirect_back();
-    }
-    catch (NotAllowedException $e)
-    {
-        $response = ['code' => 403, 'body' => view('errors/403')];
     }
     catch (NotAuthorizedException $e)
     {
